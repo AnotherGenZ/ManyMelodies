@@ -1,0 +1,24 @@
+{
+  "name": "manymelodies",
+  "version": "1.0.0",
+  "description": "A JavaScript Discord music implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "discord",
+    "music"
+  ],
+  "author": "John Smith",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^3.3.2",
+    "opusscript": "^0.0.4",
+    "tweetnacl": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "opusscript": "^0.0.4",
+    "tweetnacl": "^1.0.0"
+  }
+}
