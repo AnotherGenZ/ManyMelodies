@@ -6,6 +6,7 @@ class OggOpusTransformer extends BaseTransformer {
         super(options);
 
         this._remainder = null;
+        this._bitstream = null;
     }
 
     process(buffer) {
@@ -21,6 +22,8 @@ class OggOpusTransformer extends BaseTransformer {
         if (typeFlag === 1) {
             return new Error('OGG continued page not supported');
         }
+
+        let bitstream = buffer.readUInt32BE(buffer._index + 14);
 
         buffer._index += 26;
 
@@ -57,14 +60,21 @@ class OggOpusTransformer extends BaseTransformer {
             if (this.head) {
                 if (byte === 'OpusTags') {
                     this.emit('debug', segment.toString());
-                } else {
+                } else if (bitstream === this._bitstream) {
                     this.push(segment);
                 }
             } else if (byte === 'OpusHead') {
+                this._bitstream = bitstream;
                 this.emit('debug', (this.head = segment.toString()));
             } else {
-                this.emit('error', new Error('Invalid codec: ' + byte));
+                this.emit('debug', new Error('Invalid codec: ' + byte));
             }
+        }
+    }
+
+    _final() {
+        if (!this._bitstream) {
+            this.emit('error', new Error('No Opus stream was found'));
         }
     }
 
