@@ -14,11 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "ws": "^5.2.0",
-    "opusscript": "^0.0.4",
+    "opusscript": "^0.0.7",
     "tweetnacl": "^1.0.0"
   },
   "optionalDependencies": {
-    "opusscript": "^0.0.4",
+    "opusscript": "^0.0.7",
     "tweetnacl": "^1.0.0"
   }
 }
