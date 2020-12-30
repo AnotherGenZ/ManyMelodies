@@ -13,7 +13,7 @@
   "author": "John Smith",
   "license": "MIT",
   "dependencies": {
-    "ws": "^5.2.0",
+    "ws": "^7.4.2",
     "opusscript": "^0.0.4",
     "tweetnacl": "^1.0.0"
   },
